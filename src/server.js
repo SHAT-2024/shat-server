@@ -16,11 +16,7 @@ app.use(cors());
 app.use(express.json());
 const server = http.createServer(app);
 
-const io = new Server(server, {
-    cors: {
-        origin: "https://shat.netlify.app"
-    }
-});
+const io = new Server(server);
 
 io.on("connection", socket => {
 
