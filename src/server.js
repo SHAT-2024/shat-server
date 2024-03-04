@@ -12,11 +12,17 @@ const chatRoutes = require('./routes/chats.rout');
 const mailerChecker = require('./middleware/nodemailer');
 
 const app = express();
-app.use(cors());
+app.use(cors({
+    origin: "https://shat.netlify.app"
+  }));
 app.use(express.json());
 const server = http.createServer(app);
 
-const io = new Server(server);
+const io = new Server(server, {
+    cors: {
+        origin: "https://shat.netlify.app"
+    }
+});
 
 io.on("connection", socket => {
 
